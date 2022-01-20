@@ -11,10 +11,15 @@ import edu.wpi.first.wpilibj.Joystick;
 public class TankDriveCommand extends CommandBase {
   private TankDrive tankDrive;
   private Joystick joystick;
+  private double dead;
+  private double sens;
 
   /** Creates a new TankDriveCommand. */
-  public TankDriveCommand(TankDrive tankDrive, Joystick joystick) {
+  public TankDriveCommand(TankDrive tankDrive, Joystick joystick, double deadzone, double sensitivity) {
     // Use addRequirements() here to declare subsystem dependencies.
+    dead = deadzone;
+    sens = sensitivity;
+    addRequirements(tankDrive);
 
   }
 
@@ -25,7 +30,22 @@ public class TankDriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    tankDrive.move(joystick.getX(), joystick.getZ());
+    double x = joystick.getX();
+    double y = joystick.getY();
+    double z = joystick.getZ();
+    if (Math.abs(x) < dead) {
+      x = 0;
+    }
+
+    if (Math.abs(y) < dead) {
+      y = 0;
+    }
+
+    if (Math.abs(z) < dead) {
+      z = 0;
+    }
+
+    tankDrive.move(x*sens, y*sens, z*sens);
   }
 
   // Called once the command ends or is interrupted.
