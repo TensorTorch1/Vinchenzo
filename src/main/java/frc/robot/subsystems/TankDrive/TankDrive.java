@@ -5,15 +5,13 @@
 package frc.robot.subsystems.TankDrive;
 
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
-import edu.wpi.first.wpilibj.command.Subsystem;
-
-import frc.robot.components.OutputSetterComponent;
-import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
+import frc.robot.components.hardware.OutputSetterComponent;
 
 
-public class TankDrive extends Subsystem {
+public class TankDrive extends SubsystemBase {
 	private OutputSetterComponent doubleLeft;
 	private OutputSetterComponent doubleRight;
 
@@ -27,8 +25,8 @@ public class TankDrive extends Subsystem {
     	this.driveKinematic = new DifferentialDriveKinematics(0.8);
     }
 
-	public void move(double x, double w) {
-		ChassisSpeeds speeds = new ChassisSpeeds(x, 0, w);
+	public void move(double x, double y, double w) {
+		ChassisSpeeds speeds = new ChassisSpeeds(x, y, w);
 		DifferentialDriveWheelSpeeds speedsTwo = driveKinematic.toWheelSpeeds(speeds);
 		speedsTwo.normalize(maxWheelSpeed);
 		doubleLeft.setOutput(speedsTwo.leftMetersPerSecond);
@@ -40,8 +38,4 @@ public class TankDrive extends Subsystem {
     	// This method will be called once per scheduler run
 	}
 
-	@Override
-	public void initDefaultCommand() {
-		//idk
-	}
 }
