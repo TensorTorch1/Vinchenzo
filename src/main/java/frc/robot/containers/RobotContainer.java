@@ -19,4 +19,7 @@ public interface RobotContainer {
     default void teleopInit(){
         
     }
+    default void teleopPeriodic() {
+
+    }
 }
