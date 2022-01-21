@@ -17,6 +17,8 @@ public class TankDriveCommand extends CommandBase {
   /** Creates a new TankDriveCommand. */
   public TankDriveCommand(TankDrive tankDrive, Joystick joystick, double deadzone, double sensitivity) {
     // Use addRequirements() here to declare subsystem dependencies.
+    this.tankDrive = tankDrive;
+    this.joystick = joystick;
     dead = deadzone;
     sens = sensitivity;
     addRequirements(tankDrive);

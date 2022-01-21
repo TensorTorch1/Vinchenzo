@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import frc.robot.components.hardware.OutputSetterComponent;
 
 
@@ -15,18 +16,23 @@ public class TankDrive extends SubsystemBase {
 	private OutputSetterComponent doubleLeft;
 	private OutputSetterComponent doubleRight;
 
+	private double inX;
+
 
 	private DifferentialDriveKinematics driveKinematic;
-	private double maxWheelSpeed = 10d;
+	private double maxWheelSpeed = 900d;
 	/** Creates a new TankDrive. */
     public TankDrive(OutputSetterComponent left, OutputSetterComponent right) {
     	this.doubleLeft = left;
     	this.doubleRight = right;
     	this.driveKinematic = new DifferentialDriveKinematics(0.8);
+		Shuffleboard.getTab("drive").addNumber("x", () -> {return inX;});
     }
 
 	public void move(double x, double y, double w) {
-		ChassisSpeeds speeds = new ChassisSpeeds(x, y, w);
+		inX = x;
+		double meanOfYAndZ = (x + w) / 2;
+		ChassisSpeeds speeds = new ChassisSpeeds(meanOfYAndZ, 0, y);
 		DifferentialDriveWheelSpeeds speedsTwo = driveKinematic.toWheelSpeeds(speeds);
 		speedsTwo.normalize(maxWheelSpeed);
 		doubleLeft.setOutput(speedsTwo.leftMetersPerSecond);

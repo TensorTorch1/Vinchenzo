@@ -11,7 +11,7 @@ import frc.robot.subsystems.TankDrive.TankDriveCommand;
 public class NewRobotContainer implements RobotContainer {
     private Joystick driveStick = new Joystick(0);
     private TankDrive tankDrive = TankDriveFactory.makeTankDrive();
-    private double xSensitivity = 4, ySensitivity = 4, zSensitivity = 4, xDeadzone = 0.2, yDeadzone = 0.2, zDeadzone = 0.3;
+    private double xSensitivity = -1, ySensitivity = 1, zSensitivity = 4, xDeadzone = 0.2, yDeadzone = 0.2, zDeadzone = 0.3;
 
     public NewRobotContainer() { 
         
