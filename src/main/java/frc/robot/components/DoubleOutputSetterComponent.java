@@ -1,9 +1,9 @@
-package frc.robot.components.hardware;
+package frc.robot.components;
 
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
+import frc.robot.components.OutputSetterComponent;
 
-public class DoubleOutputSetterComponent implements OutputSetterComponent{
+public class DoubleOutputSetterComponent implements OutputSetterComponent {
     private OutputSetterComponent c1;
     private OutputSetterComponent c2;
     

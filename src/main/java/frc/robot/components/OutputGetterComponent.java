@@ -1,4 +1,4 @@
-package frc.robot.components.hardware;
+package frc.robot.components;
 
 public interface OutputGetterComponent {
 

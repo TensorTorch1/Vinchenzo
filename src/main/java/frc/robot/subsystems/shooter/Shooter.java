@@ -1,6 +1,6 @@
 package frc.robot.subsystems.shooter;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.components.hardware.OutputComponent;
+import frc.robot.components.OutputComponent;
 
 public class Shooter extends SubsystemBase {
     private OutputComponent shooterMotor;

@@ -2,13 +2,9 @@ package frc.robot.containers;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardComponent;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.components.hardware.DoubleOutputSetterComponent;
-import frc.robot.components.hardware.VictorSPComponent;
 import frc.robot.subsystems.TankDrive.TankDrive;
 import frc.robot.subsystems.TankDrive.TankDriveFactory;
 import frc.robot.subsystems.TankDrive.TankDriveCommand;

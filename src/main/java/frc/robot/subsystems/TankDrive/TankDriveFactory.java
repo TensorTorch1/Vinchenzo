@@ -1,7 +1,7 @@
 package frc.robot.subsystems.TankDrive;
 
 import frc.robot.components.hardware.VictorSPComponent;
-import frc.robot.components.hardware.DoubleOutputSetterComponent;
+import frc.robot.components.DoubleOutputSetterComponent;
 public class TankDriveFactory {
     public static TankDrive makeTankDrive() {
         VictorSPComponent left1 = new VictorSPComponent(1);

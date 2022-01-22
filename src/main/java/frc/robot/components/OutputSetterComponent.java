@@ -1,4 +1,4 @@
-package frc.robot.components.hardware;
+package frc.robot.components;
 
 /**
  * An interface for any component which controls output. This usually refers to

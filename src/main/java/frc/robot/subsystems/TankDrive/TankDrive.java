@@ -4,12 +4,12 @@
 
 package frc.robot.subsystems.TankDrive;
 
-import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
-import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import frc.robot.components.hardware.OutputSetterComponent;
+import frc.robot.components.OutputSetterComponent;
 
 
 public class TankDrive extends SubsystemBase {
@@ -34,7 +34,7 @@ public class TankDrive extends SubsystemBase {
 		double meanOfYAndZ = (x + w) / 2;
 		ChassisSpeeds speeds = new ChassisSpeeds(meanOfYAndZ, 0, y);
 		DifferentialDriveWheelSpeeds speedsTwo = driveKinematic.toWheelSpeeds(speeds);
-		speedsTwo.normalize(maxWheelSpeed);
+		speedsTwo.desaturate(maxWheelSpeed);
 		doubleLeft.setOutput(speedsTwo.leftMetersPerSecond);
 		doubleRight.setOutput(speedsTwo.rightMetersPerSecond);
 	}

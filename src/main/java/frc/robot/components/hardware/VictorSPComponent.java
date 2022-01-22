@@ -7,7 +7,8 @@
 
 package frc.robot.components.hardware;
 
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
+import frc.robot.components.OutputSetterComponent;
 
 /**
  * Add your docs here.
