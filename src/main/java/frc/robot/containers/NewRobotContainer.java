@@ -2,18 +2,13 @@ package frc.robot.containers;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
-import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import frc.robot.subsystems.TankDrive.TankDrive;
 import frc.robot.subsystems.TankDrive.TankDriveFactory;
 import frc.robot.subsystems.TankDrive.TankDriveCommand;
-import frc.robot.subsystems.shooter.Shooter;
+import frc.robot.subsystems.shooter.*;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.subsystems.shooter.ShooterSpinUpCommand;
-import frc.robot.subsystems.shooter.ShooterControl;
-import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.shooter.ShooterSpinDownCommand;
+
 import java.util.Map;
 
 public class NewRobotContainer implements RobotContainer {
@@ -24,6 +19,10 @@ public class NewRobotContainer implements RobotContainer {
     private ShooterControl shooterControl;
     private JoystickButton shooterButton = new JoystickButton(driveStick, 2);
     private NetworkTableEntry shooterSpeed;
+
+
+
+
     public NewRobotContainer() { 
         
         configureTankDrive();
@@ -37,11 +36,11 @@ public class NewRobotContainer implements RobotContainer {
     }
 
     public void configureShooter() {
+        shooter = HardwareShooterFactory.makeShooter();
         shooterButton.whenPressed(new ShooterSpinUpCommand(shooter, shooterControl));
-        ShooterSpinDownCommand sd =new ShooterSpinDownCommand(shooter);
-        shooterButton.whenReleased(sd);
+        shooterButton.whenReleased(new ShooterSpinDownCommand(shooter));
         shooterSpeed = Shuffleboard.getTab("shooter")
-        .add("Speed", 8.2).getEntry();
+        .add("Speed", 0).getEntry();
         
     }
 
